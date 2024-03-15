@@ -1,7 +1,7 @@
 import facilitatorModel from "../models/facilitatorModel.js";
 
 const facilitatorController ={
-    createNewStudent : async(req,res)=>{
+    createNewFacilitator : async(req,res)=>{
         try {
          const newFacilitator = await facilitatorModel.create(req.body)
          res.status(201).json({
@@ -17,7 +17,7 @@ const facilitatorController ={
             
         }
     },
-    getAllStudents : async (req,res)=>{
+    getAllFacilitators : async (req,res)=>{
         try {
             const getFacilitator = await facilitatorModel.find()
             res.status(200).json({
@@ -33,7 +33,7 @@ const facilitatorController ={
 
     },
 
-    getStudentById: async (req, res) => {
+    getFacilitatorById: async (req, res) => {
         try {
            const retrievedFacilitator = await facilitatorModel.findById(req.params.id);
            if (!retrievedFacilitator) {
@@ -52,7 +52,7 @@ const facilitatorController ={
         }
        },       
 
-       getStudentByEmail: async (req, res) => {
+       getFacilitatorByEmail: async (req, res) => {
         try {
            // Assuming 'email' is the field you're querying against in your studentModel
            const retrievedFacilitator = await facilitatorModel.findOne({ email: req.params.email });
@@ -72,7 +72,7 @@ const facilitatorController ={
         }
        },
 
-       updateStudent: async (req, res) => {
+       updatedFacilitator: async (req, res) => {
         try {
             // Assuming 'req.body' contains the fields to update
             const updatedFacilitator = await facilitatorModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -92,7 +92,7 @@ const facilitatorController ={
         }
     },
 
-    deleteStudent: async (req, res) => {
+    deletedFacilitator: async (req, res) => {
         try {
             const id = req.params.id;
             const deletedFacilitator = await facilitatorModel.findByIdAndDelete(id);
